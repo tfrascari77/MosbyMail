@@ -46,6 +46,9 @@ dependencies {
 
     // Material Button
     compile 'com.github.dmytrodanylyk.android-process-button:library:1.0.4'
+
+    // Firebase dependencies
+    compile 'com.google.firebase:firebase-auth:10.0.0'
 }
 
 apply plugin: 'com.google.gms.google-services'
