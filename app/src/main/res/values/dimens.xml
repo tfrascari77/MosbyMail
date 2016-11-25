@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Login dimens -->
+    <dimen name="login_container_width">250dp</dimen>
+    <dimen name="login_container_padding">25dp</dimen>
+
+
+    <!-- Font Sizes -->
+    <dimen name="font_size_xsmall">14sp</dimen>
+    <dimen name="font_size_small">16sp</dimen>
+    <dimen name="font_size_normal">18sp</dimen>
+    <dimen name="font_size_large">20sp</dimen>
+    <dimen name="font_size_xlarge">22sp</dimen>
+
+</resources>
