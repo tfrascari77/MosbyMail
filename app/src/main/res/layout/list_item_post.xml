@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/post_card_margin"
+        android:padding="@dimen/post_card_padding"
+        app:contentPadding="@dimen/post_card_padding"
+        app:cardCornerRadius="@dimen/post_card_corner_radius">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/post_creation_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:background="@color/white"
+                    android:textColor="@color/textColorSecondary"
+                    android:textStyle="italic"
+                    tools:text="2min ago" />
+
+                <TextView
+                    android:id="@+id/post_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_toLeftOf="@id/post_creation_date"
+                    android:layout_toStartOf="@id/post_creation_date"
+                    android:background="@color/white"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/font_size_large"
+                    tools:text="Title" />
+
+                <TextView
+                    android:id="@+id/post_author"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/post_title"
+                    android:layout_toLeftOf="@id/post_creation_date"
+                    android:layout_toStartOf="@id/post_creation_date"
+                    android:background="@color/white"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="@dimen/font_size_small"
+                    tools:text="Author" />
+
+
+            </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/post_image"
+                android:layout_width="@dimen/post_image_size"
+                android:layout_height="@dimen/post_image_size" />
+
+            <com.frascari.flostan.ui.widgets.PostActionBar
+                android:id="@+id/post_actionbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+</LinearLayout>
