@@ -47,3 +47,5 @@ dependencies {
     // Material Button
     compile 'com.github.dmytrodanylyk.android-process-button:library:1.0.4'
 }
+
+apply plugin: 'com.google.gms.google-services'

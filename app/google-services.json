@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "930336297292",
+    "firebase_url": "https://mosbymail-ca46d.firebaseio.com",
+    "project_id": "mosbymail-ca46d",
+    "storage_bucket": "mosbymail-ca46d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:930336297292:android:3e1da7ade9fd56d5",
+        "android_client_info": {
+          "package_name": "com.malloc.mosbymail"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "930336297292-dkecoj9bfap215g2go1amfg974b8dd3v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCvz7MM249q7drCEQCLNV7u-S3ilzDPTK8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
