@@ -12,5 +12,6 @@
     <dimen name="font_size_normal">18sp</dimen>
     <dimen name="font_size_large">20sp</dimen>
     <dimen name="font_size_xlarge">22sp</dimen>
+    <dimen name="font_size_splash_title">36sp</dimen>
 
 </resources>

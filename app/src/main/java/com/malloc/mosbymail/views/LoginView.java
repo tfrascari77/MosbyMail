@@ -10,9 +10,6 @@ public interface LoginView extends MvpView {
     // Show the loading animation
     void showLoading();
 
-    // Login successful
-    void onSuccess();
-
     // Error occurred
-    void onError();
+    void showError();
 }
