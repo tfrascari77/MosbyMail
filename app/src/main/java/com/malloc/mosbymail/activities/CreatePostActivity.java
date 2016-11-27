@@ -9,10 +9,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.dd.processbutton.iml.ActionProcessButton;
 import com.malloc.mosbymail.Constants;
 import com.malloc.mosbymail.R;
 import com.malloc.mosbymail.services.AppService;
+import com.malloc.mosbymail.services.AppServiceClient;
 import com.malloc.mosbymail.utils.Image;
 import com.malloc.mosbymail.utils.Toaster;
 import com.rengwuxian.materialedittext.MaterialEditText;
@@ -24,9 +24,6 @@ import butterknife.OnClick;
 public class CreatePostActivity extends AppCompatActivity  {
 
     private final static String TAG = CreatePostActivity.class.getSimpleName();
-
-    @BindView(R.id.submit_post)
-    ActionProcessButton mSubmit;
 
     @BindView(R.id.post_title)
     MaterialEditText mTitle;
@@ -44,10 +41,8 @@ public class CreatePostActivity extends AppCompatActivity  {
             return;
         }
 
-        final Intent intent = new Intent(this, AppService.class);
-        intent.putExtra(Constants.EXTRA_FILE_URI, mImageUri);
-        intent.putExtra(Constants.EXTRA_POST_TITLE, title);
-        startService(intent);
+        final AppServiceClient appServiceClient = new AppServiceClient(this);
+        appServiceClient.createPost(title, mImageUri);
 
         Toaster.showToast(this, R.string.creating_post);
         finish();

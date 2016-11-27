@@ -68,7 +68,7 @@
                 android:layout_width="@dimen/post_image_size"
                 android:layout_height="@dimen/post_image_size" />
 
-            <com.frascari.flostan.ui.widgets.PostActionBar
+            <com.malloc.mosbymail.widgets.PostActionBar
                 android:id="@+id/post_actionbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>

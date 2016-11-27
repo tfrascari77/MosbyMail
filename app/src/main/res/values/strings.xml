@@ -24,4 +24,5 @@
     <string name="create_post">Create Post</string>
     <string name="post_created_successfully">Post created successfully!</string>
     <string name="creating_post">Creating post&#8230;</string>
+    <string name="author_format">\@%1$s</string>
 </resources>

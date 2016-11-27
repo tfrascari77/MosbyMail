@@ -8,6 +8,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.FileProvider;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -21,10 +22,12 @@ import com.hannesdorfmann.mosby.mvp.viewstate.MvpViewStateFragment;
 import com.hannesdorfmann.mosby.mvp.viewstate.ViewState;
 import com.malloc.mosbymail.Constants;
 import com.malloc.mosbymail.R;
+import com.malloc.mosbymail.adapters.PostAdapter;
 import com.malloc.mosbymail.presenters.HomePresenter;
 import com.malloc.mosbymail.states.HomeViewState;
 import com.malloc.mosbymail.utils.Content;
 import com.malloc.mosbymail.utils.Dialogs;
+import com.malloc.mosbymail.utils.Firebase;
 import com.malloc.mosbymail.utils.Navigation;
 import com.malloc.mosbymail.views.HomeView;
 
@@ -69,7 +72,10 @@ public class HomeFragment extends MvpViewStateFragment<HomeView, HomePresenter> 
     }
 
     private void setupRecycler() {
-
+        final PostAdapter postAdapter = new PostAdapter(getActivity(), Firebase.getPostQuery());
+        final LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        mRecycler.setLayoutManager(layoutManager);
+        mRecycler.setAdapter(postAdapter);
     }
 
     private void setupFAB() {
@@ -82,7 +88,7 @@ public class HomeFragment extends MvpViewStateFragment<HomeView, HomePresenter> 
     }
 
     private void onTakePicturePressed() {
-        File photoFile = null;
+        File photoFile;
         try {
             photoFile = Content.createImageFile(getActivity());
         } catch (final IOException e) {

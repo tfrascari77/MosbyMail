@@ -30,10 +30,4 @@ public class HomePresenter extends MvpBasePresenter<HomeView> {
         });
         firebaseAuth.signOut();
     }
-
-    private void showError() {
-        if (isViewAttached()) {
-            getView().showErrorDialog();
-        }
-    }
 }

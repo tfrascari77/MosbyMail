@@ -16,6 +16,9 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".activities.CreatePostActivity"
+            android:label="@string/create_post" />
+
         <provider
             android:authorities="com.malloc.mosbymail.fileprovider"
             android:name="android.support.v4.content.FileProvider"
@@ -26,6 +29,10 @@
                 android:resource="@xml/file_paths">
             </meta-data>
         </provider>
+
+        <service android:name=".services.AppService"
+            android:exported="false"
+            android:enabled="true" />
 
     </application>
 

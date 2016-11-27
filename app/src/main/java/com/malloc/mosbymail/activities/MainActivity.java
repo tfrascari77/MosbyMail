@@ -77,13 +77,13 @@ public class MainActivity extends MvpActivity<MainView, MainPresenter> implement
 
     @Override
     public void showHome() {
-        setTitle(R.string.home);
-        setActionBarVisibility(true);
         getSupportFragmentManager().beginTransaction()
                 .hide(mSplashFragment)
                 .hide(mLoginFragment)
                 .show(mHomeFragment)
                 .commit();
+        setActionBarVisibility(true);
+        setTitle(R.string.home);
     }
 
     @Override
