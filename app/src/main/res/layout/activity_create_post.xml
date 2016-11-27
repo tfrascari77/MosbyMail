@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/create_post_padding">
+
+    <com.dd.processbutton.iml.ActionProcessButton
+        android:id="@+id/submit_post"
+        style="@style/ButtonCreatePostSubmit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="end" />
+
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:id="@+id/post_title"
+        style="@style/EditTextCreatePost"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true" />
+
+    <ImageView
+        android:id="@+id/post_preview"
+        android:layout_width="@dimen/post_image_size"
+        android:layout_height="@dimen/post_image_size"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@id/submit_post"
+        android:layout_below="@id/post_title"
+        android:layout_marginTop="@dimen/create_post_components_margin"/>
+</RelativeLayout>

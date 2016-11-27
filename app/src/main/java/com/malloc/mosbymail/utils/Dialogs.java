@@ -1,18 +1,24 @@
 package com.malloc.mosbymail.utils;
 
-import android.app.ProgressDialog;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 
 import com.malloc.mosbymail.R;
 
 public class Dialogs {
 
-    public static ProgressDialog buildLogoutDialog(final Context context) {
-        final ProgressDialog progressDialog = new ProgressDialog(context);
-        progressDialog.setTitle(R.string.logout);
-        progressDialog.setMessage(context.getString(R.string.please_wait));
-        progressDialog.setCancelable(false);
-        progressDialog.setIndeterminate(true);
-        return progressDialog;
+    public static void showErrorDialog(final Context context) {
+        final AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle(R.string.error_dialog_title);
+        builder.setMessage(R.string.error_dialog_message);
+        builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
+        builder.setCancelable(false);
+        builder.show();
     }
 }

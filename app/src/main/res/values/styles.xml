@@ -44,12 +44,12 @@
         <item name="pb_colorPressed">@color/colorAccentDark</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">@dimen/font_size_large</item>
+        <item name="pb_textComplete">@string/success</item>
+        <item name="pb_textProgress">@string/loading</item>
     </style>
 
     <style name="ButtonLoginSubmit" parent="ActionButtonBase">
         <item name="android:text">@string/login</item>
-        <item name="pb_textComplete">@string/success</item>
-        <item name="pb_textProgress">@string/loading</item>
     </style>
 
     <style name="FABHome">
@@ -58,10 +58,20 @@
         <item name="android:src">@mipmap/ic_party_mode_white</item>
     </style>
 
-    <style name="CounterTextViewStyle">
+    <style name="TextViewCounter">
         <item name="android:textSize">@dimen/font_size_xxsmall</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:gravity">center</item>
+    </style>
+
+    <style name="EditTextCreatePost" parent="EditTextBase">
+        <item name="android:maxLines">@integer/create_post_title_max_lines</item>
+        <item name="android:hint">@string/title</item>
+        <item name="android:inputType">text</item>
+    </style>
+
+    <style name="ButtonCreatePostSubmit" parent="ActionButtonBase">
+        <item name="android:text">@string/create_post</item>
     </style>
 
 

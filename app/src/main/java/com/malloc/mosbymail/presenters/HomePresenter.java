@@ -11,6 +11,8 @@ import org.greenrobot.eventbus.EventBus;
 
 public class HomePresenter extends MvpBasePresenter<HomeView> {
 
+    private final static String TAG = HomePresenter.class.getSimpleName();
+
     private final EventBus mEventBus;
 
     public HomePresenter() {
@@ -27,5 +29,11 @@ public class HomePresenter extends MvpBasePresenter<HomeView> {
             }
         });
         firebaseAuth.signOut();
+    }
+
+    private void showError() {
+        if (isViewAttached()) {
+            getView().showErrorDialog();
+        }
     }
 }

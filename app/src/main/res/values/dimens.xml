@@ -1,12 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="post_card_corner_radius">4dp</dimen>
+    <dimen name="post_card_margin">8dp</dimen>
+    <dimen name="post_card_padding">10dp</dimen>
+    <dimen name="post_image_size">200dp</dimen>
+    <dimen name="post_action_bar_padding">10dp</dimen>
 
     <!-- Login dimens -->
     <dimen name="login_container_width">250dp</dimen>
     <dimen name="login_container_padding">25dp</dimen>
 
+    <!-- Home dimens -->
+    <dimen name="home_fab_margin">20dp</dimen>
+
+
+    <!-- Create Post dimens -->
+    <dimen name="create_post_padding">20dp</dimen>
+    <dimen name="create_post_fields_padding">15dp</dimen>
+    <dimen name="create_post_button_padding">15dp</dimen>
+    <dimen name="create_post_spinner_padding">15dp</dimen>
+    <dimen name="create_post_components_margin">10dp</dimen>
+    <dimen name="create_post_image_size">200dp</dimen>
+
 
     <!-- Font Sizes -->
+    <dimen name="font_size_xxsmall">12sp</dimen>
     <dimen name="font_size_xsmall">14sp</dimen>
     <dimen name="font_size_small">16sp</dimen>
     <dimen name="font_size_normal">18sp</dimen>
