@@ -8,4 +8,49 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="AppTheme.NoActionBar" parent="AppTheme">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="TextViewSplashTitle">
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:textSize">@dimen/font_size_splash_title</item>
+        <item name="android:gravity">center</item>
+        <item name="android:text">@string/app_name</item>
+    </style>
+
+    <style name="EditTextBase">
+        <item name="met_floatingLabel">highlight</item>
+        <item name="met_singleLineEllipsis">true</item>
+        <item name="android:textSize">@dimen/font_size_normal</item>
+    </style>
+
+    <style name="EditTextLoginUsername" parent="EditTextBase">
+        <item name="met_iconLeft">@mipmap/ic_person_black</item>
+        <item name="android:inputType">text</item>
+        <item name="android:hint">@string/username</item>
+    </style>
+
+    <style name="EditTextLoginPassword" parent="EditTextBase">
+        <item name="met_iconLeft">@mipmap/ic_lock_black</item>
+        <item name="android:inputType">textPassword</item>
+        <item name="android:hint">@string/password</item>
+    </style>
+
+    <style name="ActionButtonBase">
+        <item name="pb_colorComplete">@color/green_complete</item>
+        <item name="pb_colorNormal">@color/colorAccent</item>
+        <item name="pb_colorPressed">@color/colorAccentDark</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/font_size_large</item>
+    </style>
+
+    <style name="ButtonLoginSubmit" parent="ActionButtonBase">
+        <item name="android:text">@string/login</item>
+        <item name="pb_textComplete">@string/success</item>
+        <item name="pb_textProgress">@string/loading</item>
+    </style>
+
+
 </resources>
