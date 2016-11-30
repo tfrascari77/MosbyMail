@@ -16,4 +16,10 @@ public class Input {
         inputMethodManager.hideSoftInputFromWindow(currentFocus.getWindowToken(), 0);
         currentFocus.clearFocus();
     }
+
+    public static void hideKeyboard(final Context context, final View view) {
+        final InputMethodManager inputMethodManager = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        view.clearFocus();
+    }
 }

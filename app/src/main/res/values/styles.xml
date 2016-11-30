@@ -128,6 +128,7 @@
         <item name="android:hint">@string/type_your_comment</item>
         <item name="android:paddingLeft">@dimen/comment_input_padding</item>
         <item name="android:paddingRight">@dimen/comment_input_padding</item>
+        <item name="android:imeOptions">actionDone</item>
     </style>
 
     <style name="ImageViewSendComment">

@@ -4,37 +4,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <RelativeLayout
-        android:id="@+id/input_container"
+    <com.malloc.mosbymail.widgets.CommentActionBar
+        android:id="@+id/comment_actionbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true">
-
-        <ImageView
-            android:id="@+id/send_comment"
-            style="@style/ImageViewSendComment"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true" />
-
-        <com.rengwuxian.materialedittext.MaterialEditText
-            android:id="@+id/input_comment"
-            style="@style/EditTextComment"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_toLeftOf="@id/send_comment"
-            android:layout_toStartOf="@id/send_comment" />
-
-    </RelativeLayout>
+        android:layout_alignParentBottom="true" />
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/input_container">
+        android:layout_above="@id/comment_actionbar">
 
         <ProgressBar
             style="@style/ProgressBarIndeterminate"
