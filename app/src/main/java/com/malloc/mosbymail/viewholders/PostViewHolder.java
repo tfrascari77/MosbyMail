@@ -8,13 +8,9 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.ValueEventListener;
 import com.malloc.mosbymail.R;
 import com.malloc.mosbymail.models.Post;
 import com.malloc.mosbymail.services.AppServiceClient;
-import com.malloc.mosbymail.utils.Firebase;
 import com.malloc.mosbymail.utils.Image;
 import com.malloc.mosbymail.utils.Navigation;
 import com.malloc.mosbymail.widgets.PostActionBar;
@@ -60,42 +56,6 @@ public class PostViewHolder extends RecyclerView.ViewHolder {
         }
     };
 
-    private final ValueEventListener mPostUserLikeValueEventListener = new ValueEventListener() {
-        @Override
-        public void onDataChange(DataSnapshot dataSnapshot) {
-            mActionBar.setLike(dataSnapshot.exists());
-        }
-
-        @Override
-        public void onCancelled(DatabaseError databaseError) {
-
-        }
-    };
-
-    private final ValueEventListener mPostLikesValueEventListener = new ValueEventListener() {
-        @Override
-        public void onDataChange(DataSnapshot dataSnapshot) {
-            mActionBar.setLikeCount(dataSnapshot.getChildrenCount());
-        }
-
-        @Override
-        public void onCancelled(DatabaseError databaseError) {
-
-        }
-    };
-
-    private final ValueEventListener mPostCommentsValueEventListener = new ValueEventListener() {
-        @Override
-        public void onDataChange(DataSnapshot dataSnapshot) {
-            mActionBar.setCommentCount(dataSnapshot.getChildrenCount());
-        }
-
-        @Override
-        public void onCancelled(DatabaseError databaseError) {
-
-        }
-    };
-
     public PostViewHolder(View itemView) {
         super(itemView);
         ButterKnife.bind(this, itemView);
@@ -115,17 +75,6 @@ public class PostViewHolder extends RecyclerView.ViewHolder {
 
         Image.loadPostThumbnail(mActivity, mImage, Uri.parse(post.imagePath));
 
-        mActionBar.setOnActionPressedListener(mOnActionPressedListener);
-
-
-        Firebase.getPostUserLikeRef(postId).addValueEventListener(mPostUserLikeValueEventListener);
-        Firebase.getPostLikeRef(postId).addValueEventListener(mPostLikesValueEventListener);
-        Firebase.getPostCommentsRef(postId).addValueEventListener(mPostCommentsValueEventListener);
-    }
-
-    public void unbind() {
-        Firebase.getPostUserLikeRef(mPostId).removeEventListener(mPostUserLikeValueEventListener);
-        Firebase.getPostLikeRef(mPostId).removeEventListener(mPostLikesValueEventListener);
-        Firebase.getPostCommentsRef(mPostId).removeEventListener(mPostCommentsValueEventListener);
+        mActionBar.bind(postId, mOnActionPressedListener);
     }
 }
