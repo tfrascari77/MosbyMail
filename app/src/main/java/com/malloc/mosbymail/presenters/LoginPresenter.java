@@ -4,17 +4,11 @@ import android.support.annotation.NonNull;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.hannesdorfmann.mosby.mvp.MvpBasePresenter;
-import com.malloc.mosbymail.events.LoginEvent;
 import com.malloc.mosbymail.views.LoginView;
-
-import org.greenrobot.eventbus.EventBus;
 
 public class LoginPresenter extends MvpBasePresenter<LoginView> {
 
-    private final EventBus mEventBus;
-
     public LoginPresenter() {
-        mEventBus = EventBus.getDefault();
     }
 
     public void doLogin(final String username, final String password) {
@@ -28,9 +22,8 @@ public class LoginPresenter extends MvpBasePresenter<LoginView> {
                 firebaseAuth.removeAuthStateListener(this);
                 if (firebaseAuth.getCurrentUser() != null) {
                     if (isViewAttached()) {
-                        getView().showLoginForm();
+                        getView().onSuccess();
                     }
-                    mEventBus.post(new LoginEvent());
                 } else {
                     if (isViewAttached()) {
                         getView().showError();

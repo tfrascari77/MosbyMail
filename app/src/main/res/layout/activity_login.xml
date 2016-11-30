@@ -13,22 +13,24 @@
         android:padding="@dimen/login_container_padding">
 
         <com.rengwuxian.materialedittext.MaterialEditText
-            style="@style/EditTextLoginUsername"
+            style="@style/EditTextUsername"
             android:id="@+id/username"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:nextFocusForward="@+id/password" />
 
         <com.rengwuxian.materialedittext.MaterialEditText
-            style="@style/EditTextLoginPassword"
+            style="@style/EditTextPassword"
             android:id="@+id/password"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:nextFocusForward="@+id/submit" />
 
         <com.dd.processbutton.iml.ActionProcessButton
             style="@style/ButtonLoginSubmit"
             android:id="@+id/submit"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"/>
 
     </LinearLayout>
 

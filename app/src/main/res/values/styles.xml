@@ -20,22 +20,38 @@
         <item name="android:text">@string/app_name</item>
     </style>
 
+    <style name="TextViewLoginNoAccount">
+        <item name="android:textSize">@dimen/font_size_large</item>
+        <item name="android:color">@color/colorAccent</item>
+        <item name="android:gravity">center</item>
+        <item name="android:text">@string/login_no_account</item>
+    </style>
+
     <style name="EditTextBase">
         <item name="met_floatingLabel">highlight</item>
         <item name="met_singleLineEllipsis">true</item>
         <item name="android:textSize">@dimen/font_size_normal</item>
     </style>
 
-    <style name="EditTextLoginUsername" parent="EditTextBase">
+    <style name="EditTextUsername" parent="EditTextBase">
         <item name="met_iconLeft">@mipmap/ic_person_black</item>
         <item name="android:inputType">text</item>
         <item name="android:hint">@string/username</item>
+        <item name="android:imeOptions">actionNext</item>
     </style>
 
-    <style name="EditTextLoginPassword" parent="EditTextBase">
+    <style name="EditTextPassword" parent="EditTextBase">
         <item name="met_iconLeft">@mipmap/ic_lock_black</item>
         <item name="android:inputType">textPassword</item>
+        <item name="android:imeOptions">actionDone</item>
         <item name="android:hint">@string/password</item>
+    </style>
+
+    <style name="EditTextDisplayName" parent="EditTextBase">
+        <item name="met_iconLeft">@mipmap/ic_mood_black</item>
+        <item name="android:inputType">textCapWords</item>
+        <item name="android:hint">@string/display_name</item>
+        <item name="android:imeOptions">actionDone</item>
     </style>
 
     <style name="ActionButtonBase">
