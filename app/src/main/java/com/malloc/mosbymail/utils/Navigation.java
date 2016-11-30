@@ -1,5 +1,6 @@
 package com.malloc.mosbymail.utils;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -7,6 +8,7 @@ import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 
 import com.malloc.mosbymail.Constants;
+import com.malloc.mosbymail.activities.CommentsActivity;
 import com.malloc.mosbymail.activities.CreatePostActivity;
 import com.malloc.mosbymail.activities.MainActivity;
 import com.malloc.mosbymail.activities.LoginActivity;
@@ -41,5 +43,11 @@ public class Navigation {
         final Intent intent = new Intent(fragment.getContext(), CreatePostActivity.class);
         intent.putExtra(Constants.EXTRA_FILE_URI, photoUri);
         fragment.startActivity(intent);
+    }
+
+    public static void startComments(final Activity activity, final String postId) {
+        final Intent intent = new Intent(activity, CommentsActivity.class);
+        intent.putExtra(Constants.EXTRA_POST_ID, postId);
+        activity.startActivity(intent);
     }
 }

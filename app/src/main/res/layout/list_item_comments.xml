@@ -22,48 +22,33 @@
 
                 <TextView
                     style="@style/TextViewTimestamp"
-                    android:id="@+id/post_creation_date"
+                    android:id="@+id/comment_creation_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    tools:text="2min ago" />
-
-                <TextView
-                    style="@style/TextViewTitle"
-                    android:id="@+id/post_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_toLeftOf="@id/post_creation_date"
-                    android:layout_toStartOf="@id/post_creation_date"
-                    tools:text="Title" />
+                    tools:text="2min ago"/>
 
                 <TextView
                     style="@style/TextViewAuthor"
-                    android:id="@+id/post_author"
+                    android:id="@+id/comment_author"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/post_title"
-                    android:layout_toLeftOf="@id/post_creation_date"
-                    android:layout_toStartOf="@id/post_creation_date"
-                    tools:text="Author" />
-
+                    android:layout_toLeftOf="@id/comment_creation_date"
+                    android:layout_toStartOf="@id/comment_creation_date"
+                    tools:text="Author"/>
 
             </RelativeLayout>
 
-            <ImageView
-                android:id="@+id/post_image"
-                android:layout_width="@dimen/post_image_size"
-                android:layout_height="@dimen/post_image_size" />
-
-            <com.malloc.mosbymail.widgets.PostActionBar
-                android:id="@+id/post_actionbar"
+            <TextView
+                style="@style/TextViewParagraph"
+                android:id="@+id/comment_text"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit."/>
 
         </LinearLayout>
 
     </android.support.v7.widget.CardView>
+
 </LinearLayout>

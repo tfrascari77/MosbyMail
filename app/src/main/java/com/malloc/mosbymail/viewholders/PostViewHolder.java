@@ -16,6 +16,7 @@ import com.malloc.mosbymail.models.Post;
 import com.malloc.mosbymail.services.AppServiceClient;
 import com.malloc.mosbymail.utils.Firebase;
 import com.malloc.mosbymail.utils.Image;
+import com.malloc.mosbymail.utils.Navigation;
 import com.malloc.mosbymail.widgets.PostActionBar;
 
 import butterknife.BindView;
@@ -50,7 +51,7 @@ public class PostViewHolder extends RecyclerView.ViewHolder {
 
         @Override
         public void onCommentPressed() {
-            // TODO
+            Navigation.startComments(mActivity, mPostId);
         }
 
         @Override
@@ -82,18 +83,18 @@ public class PostViewHolder extends RecyclerView.ViewHolder {
 
         }
     };
-//
-//    private final ValueEventListener mPostCommentsValueEventListener = new ValueEventListener() {
-//        @Override
-//        public void onDataChange(DataSnapshot dataSnapshot) {
-//            mActionBar.setCommentCount(dataSnapshot.getChildrenCount());
-//        }
-//
-//        @Override
-//        public void onCancelled(DatabaseError databaseError) {
-//
-//        }
-//    };
+
+    private final ValueEventListener mPostCommentsValueEventListener = new ValueEventListener() {
+        @Override
+        public void onDataChange(DataSnapshot dataSnapshot) {
+            mActionBar.setCommentCount(dataSnapshot.getChildrenCount());
+        }
+
+        @Override
+        public void onCancelled(DatabaseError databaseError) {
+
+        }
+    };
 
     public PostViewHolder(View itemView) {
         super(itemView);
@@ -105,7 +106,11 @@ public class PostViewHolder extends RecyclerView.ViewHolder {
         mActivity = activity;
         mPostId = postId;
         mTitle.setText(post.title);
-        mAuthor.setText(activity.getString(R.string.author_format, post.authorName));
+
+        // TODO Use actual author when ready
+        mAuthor.setText(activity.getString(R.string.dummy_author));
+        //mAuthor.setText(activity.getString(R.string.author_format, post.authorName));
+
         mCreationDate.setText(DateUtils.getRelativeTimeSpanString(post.creationDate * -1, System.currentTimeMillis(), DateUtils.MINUTE_IN_MILLIS, DateUtils.FORMAT_ABBREV_RELATIVE).toString());
 
         Image.loadPostThumbnail(mActivity, mImage, Uri.parse(post.imagePath));
@@ -115,12 +120,12 @@ public class PostViewHolder extends RecyclerView.ViewHolder {
 
         Firebase.getPostUserLikeRef(postId).addValueEventListener(mPostUserLikeValueEventListener);
         Firebase.getPostLikeRef(postId).addValueEventListener(mPostLikesValueEventListener);
-//        Client.getInstance().getPostCommentRef(postId).addValueEventListener(mPostCommentsValueEventListener);
+        Firebase.getPostCommentsRef(postId).addValueEventListener(mPostCommentsValueEventListener);
     }
 
     public void unbind() {
         Firebase.getPostUserLikeRef(mPostId).removeEventListener(mPostUserLikeValueEventListener);
         Firebase.getPostLikeRef(mPostId).removeEventListener(mPostLikesValueEventListener);
-//        Client.getInstance().getPostCommentRef(mPostId).removeEventListener(mPostCommentsValueEventListener);
+        Firebase.getPostCommentsRef(mPostId).removeEventListener(mPostCommentsValueEventListener);
     }
 }

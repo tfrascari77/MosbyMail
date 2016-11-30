@@ -28,4 +28,12 @@ public class AppServiceClient {
         intent.putExtra(Constants.EXTRA_POST_ID, postId);
         mContext.startService(intent);
     }
+
+    public void commentPost(final String comment, final String postId) {
+        final Intent intent = new Intent(mContext, AppService.class);
+        intent.putExtra(Constants.EXTRA_SERVICE_ACTION, Constants.SERVICE_ACTION_COMMENT_POST);
+        intent.putExtra(Constants.EXTRA_POST_ID, postId);
+        intent.putExtra(Constants.EXTRA_COMMENT_TEXT, comment);
+        mContext.startService(intent);
+    }
 }

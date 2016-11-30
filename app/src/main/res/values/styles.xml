@@ -90,5 +90,60 @@
         <item name="android:text">@string/create_post</item>
     </style>
 
+    <style name="CardBase">
+        <item name="android:layout_margin">@dimen/card_margin</item>
+        <item name="android:padding">@dimen/card_padding</item>
+        <item name="contentPadding">@dimen/card_padding</item>
+        <item name="cardCornerRadius">@dimen/card_corner_radius</item>
+    </style>
+
+    <style name="TextViewBase">
+        <item name="android:background">@color/white</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="TextViewTimestamp" parent="TextViewBase">
+        <item name="android:textColor">@color/textColorSecondary</item>
+        <item name="android:textStyle">italic</item>
+    </style>
+
+    <style name="TextViewAuthor" parent="TextViewBase">
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:textSize">@dimen/font_size_small</item>
+    </style>
+
+    <style name="TextViewTitle" parent="TextViewBase">
+        <item name="android:textSize">@dimen/font_size_large</item>
+    </style>
+
+    <style name="TextViewParagraph" parent="TextViewBase">
+        <item name="android:textSize">@dimen/font_size_normal</item>
+    </style>
+
+    <style name="EditTextComment">
+        <item name="met_floatingLabel">none</item>
+        <item name="met_singleLineEllipsis">true</item>
+        <item name="met_maxCharacters">@integer/comment_max_length</item>
+        <item name="met_hideUnderline">true</item>
+        <item name="android:hint">@string/type_your_comment</item>
+        <item name="android:paddingLeft">@dimen/comment_input_padding</item>
+        <item name="android:paddingRight">@dimen/comment_input_padding</item>
+    </style>
+
+    <style name="ImageViewSendComment">
+        <item name="android:padding">@dimen/comment_send_button_padding</item>
+        <item name="android:src">@drawable/selector_ic_send</item>
+        <item name="android:contentDescription">@string/content_description_send_comment</item>
+    </style>
+
+    <style name="ProgressBarIndeterminate" parent="@android:style/Widget.ProgressBar">
+        <item name="android:indeterminate">true</item>
+    </style>
+
+    <style name="TextViewError" parent="TextViewBase">
+        <item name="android:textColor">@color/red_error</item>
+        <item name="android:textSize">@dimen/font_size_large</item>
+    </style>
+
 
 </resources>

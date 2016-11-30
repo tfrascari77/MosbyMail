@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="post_card_corner_radius">4dp</dimen>
-    <dimen name="post_card_margin">8dp</dimen>
-    <dimen name="post_card_padding">10dp</dimen>
+    <!-- Default dimens -->
+    <dimen name="card_corner_radius">4dp</dimen>
+    <dimen name="card_margin">8dp</dimen>
+    <dimen name="card_padding">4dp</dimen>
+
+    <!-- Post dimens -->
     <dimen name="post_image_size">200dp</dimen>
     <dimen name="post_action_bar_padding">10dp</dimen>
 
@@ -35,5 +38,9 @@
     <dimen name="font_size_large">20sp</dimen>
     <dimen name="font_size_xlarge">22sp</dimen>
     <dimen name="font_size_splash_title">36sp</dimen>
+
+    <!-- Comments dimens -->
+    <dimen name="comment_input_padding">10dp</dimen>
+    <dimen name="comment_send_button_padding">10dp</dimen>
 
 </resources>

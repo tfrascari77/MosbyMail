@@ -29,4 +29,12 @@
     <string name="post_created_successfully">Post created successfully!</string>
     <string name="creating_post">Creating post&#8230;</string>
     <string name="author_format">\@%1$s</string>
+    <string name="content_description_send_comment">Send comment</string>
+    <string name="type_your_comment">Type your comment here</string>
+    <string name="error_comments_loading">Unable to load post comments.</string>
+    <string name="comments">Comments</string>
+
+
+    <!-- TODO: Remove -->
+    <string name="dummy_author">\@Malloc</string>
 </resources>
