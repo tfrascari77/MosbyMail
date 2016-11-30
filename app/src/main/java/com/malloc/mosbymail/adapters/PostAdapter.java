@@ -21,10 +21,4 @@ public class PostAdapter extends FirebaseRecyclerAdapter<Post, PostViewHolder> {
     protected void populateViewHolder(PostViewHolder viewHolder, Post model, int position) {
         viewHolder.bind(mActivity, model, getRef(position).getKey());
     }
-
-    @Override
-    public void onViewRecycled(PostViewHolder holder) {
-        super.onViewRecycled(holder);
-        holder.unbind();
-    }
 }

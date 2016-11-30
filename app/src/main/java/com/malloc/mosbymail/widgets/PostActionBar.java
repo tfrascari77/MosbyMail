@@ -4,17 +4,19 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import com.hannesdorfmann.mosby.mvp.layout.MvpFrameLayout;
 import com.malloc.mosbymail.R;
+import com.malloc.mosbymail.presenters.PostActionBarPresenter;
 import com.malloc.mosbymail.utils.Format;
+import com.malloc.mosbymail.views.PostActionBarView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class PostActionBar extends FrameLayout {
+public class PostActionBar extends MvpFrameLayout<PostActionBarView, PostActionBarPresenter> implements PostActionBarView {
 
     @BindView(R.id.post_like)
     TextView mLike;
@@ -45,6 +47,8 @@ public class PostActionBar extends FrameLayout {
         }
     }
 
+    private String mPostId;
+
     public PostActionBar(Context context) {
         this(context, null);
     }
@@ -61,20 +65,29 @@ public class PostActionBar extends FrameLayout {
         }
     }
 
-    public void setOnActionPressedListener(final OnActionPressedListener listener) {
-        mListener = listener;
+    @Override
+    public PostActionBarPresenter createPresenter() {
+        return new PostActionBarPresenter(mPostId);
     }
 
-    public void setLike(final boolean liked) {
+    public void bind(final String postId, final OnActionPressedListener listener) {
+        mListener = listener;
+        mPostId = postId;
+    }
+
+    @Override
+    public void onUserLikeUpdated(boolean liked) {
         mLike.setCompoundDrawablesWithIntrinsicBounds(0, liked ? R.drawable.selector_ic_unlike : R.drawable.selector_ic_like, 0, 0);
     }
 
-    public void setLikeCount(final long likeCount) {
-        Format.formatCounters(likeCount);
+    @Override
+    public void onPostLikeCountUpdated(long postLikeCount) {
+        mLike.setText(Format.formatCounters(postLikeCount));
     }
 
-    public void setCommentCount(final long commentCount) {
-        Format.formatCounters(commentCount);
+    @Override
+    public void onPostCommentCountUpdated(long postCommentCount) {
+        mComment.setText(Format.formatCounters(postCommentCount));
     }
 
     public interface OnActionPressedListener {
