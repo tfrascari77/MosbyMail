@@ -12,4 +12,9 @@ public interface LoginView extends MvpView {
 
     // Error occurred
     void showError();
+
+    // Login successful
+    void onSuccess();
+
+
 }

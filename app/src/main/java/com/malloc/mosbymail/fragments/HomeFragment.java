@@ -131,7 +131,7 @@ public class HomeFragment extends MvpViewStateFragment<HomeView, HomePresenter> 
 
     private void onTakePictureResult(final int resultCode) {
         if (resultCode == Activity.RESULT_OK) {
-            Navigation.startCreatePostActivity(this, mPhotoUri);
+            Navigation.startCreatePost(this, mPhotoUri);
         } else {
             Dialogs.showErrorDialog(getActivity());
         }

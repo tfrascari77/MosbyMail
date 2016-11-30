@@ -4,7 +4,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.hannesdorfmann.mosby.mvp.MvpBasePresenter;
 import com.malloc.mosbymail.events.CreatePostEvent;
-import com.malloc.mosbymail.events.LoginEvent;
 import com.malloc.mosbymail.events.LogoutEvent;
 import com.malloc.mosbymail.views.MainView;
 
@@ -27,15 +26,8 @@ public class MainPresenter extends MvpBasePresenter<MainView> {
 
         final FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
         if (currentUser == null) {
-            getView().showLogin();
+            getView().onAuthenticationRequired();
         } else {
-            getView().showHome();
-        }
-    }
-
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onMessageEvent(final LoginEvent event) {
-        if (isViewAttached()) {
             getView().showHome();
         }
     }
@@ -43,7 +35,7 @@ public class MainPresenter extends MvpBasePresenter<MainView> {
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onMessageEvent(final LogoutEvent event) {
         if (isViewAttached()) {
-            getView().showLogin();
+            getView().onAuthenticationRequired();
         }
     }
 

@@ -7,8 +7,12 @@
     <dimen name="post_action_bar_padding">10dp</dimen>
 
     <!-- Login dimens -->
-    <dimen name="login_container_width">250dp</dimen>
+    <dimen name="login_container_width">300dp</dimen>
     <dimen name="login_container_padding">25dp</dimen>
+
+    <!-- SignUp dimens -->
+    <dimen name="signup_container_width">250dp</dimen>
+    <dimen name="signup_container_padding">25dp</dimen>
 
     <!-- Home dimens -->
     <dimen name="home_fab_margin">20dp</dimen>

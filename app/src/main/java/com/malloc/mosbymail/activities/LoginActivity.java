@@ -1,31 +1,29 @@
-package com.malloc.mosbymail.fragments;
+package com.malloc.mosbymail.activities;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.text.Editable;
 import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.view.KeyEvent;
+import android.view.inputmethod.EditorInfo;
+import android.widget.TextView;
 
 import com.dd.processbutton.iml.ActionProcessButton;
-import com.hannesdorfmann.mosby.mvp.viewstate.MvpViewStateFragment;
-import com.hannesdorfmann.mosby.mvp.viewstate.ViewState;
+import com.hannesdorfmann.mosby.mvp.MvpActivity;
 import com.malloc.mosbymail.R;
 import com.malloc.mosbymail.presenters.LoginPresenter;
-import com.malloc.mosbymail.states.LoginViewState;
 import com.malloc.mosbymail.utils.Input;
-import com.malloc.mosbymail.utils.Toaster;
+import com.malloc.mosbymail.utils.Navigation;
 import com.malloc.mosbymail.views.LoginView;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.OnEditorAction;
+import butterknife.OnTextChanged;
 
-public class LoginFragment extends MvpViewStateFragment<LoginView, LoginPresenter> implements LoginView {
-
-    public final static String TAG = LoginFragment.class.getSimpleName();
+public class LoginActivity extends MvpActivity<LoginView, LoginPresenter> implements LoginView {
 
     @BindView(R.id.username)
     MaterialEditText mUsername;
@@ -38,7 +36,7 @@ public class LoginFragment extends MvpViewStateFragment<LoginView, LoginPresente
 
     @OnClick(R.id.submit)
     public void onSubmitPressed() {
-        Input.hideKeyboard(getActivity());
+        Input.hideKeyboard(this);
         boolean validation = true;
 
         final String username = mUsername.getText().toString();
@@ -61,28 +59,26 @@ public class LoginFragment extends MvpViewStateFragment<LoginView, LoginPresente
         presenter.doLogin(username, password);
     }
 
+    @OnEditorAction(R.id.password)
+    boolean onEditorAction(final TextView textView, final int actionId, final KeyEvent keyEvent) {
+        if (actionId == EditorInfo.IME_ACTION_DONE) {
+            onSubmitPressed();
+            return true;
+        }
+        return false;
+    }
+
+    @OnTextChanged(value = {R.id.username, R.id.password}, callback = OnTextChanged.Callback.AFTER_TEXT_CHANGED)
+    void onTextChanged(final Editable editable) {
+        mUsername.setError(null);
+        mPassword.setError(null);
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setRetainInstance(true);
-    }
-
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        final View view = inflater.inflate(R.layout.fragment_login, container, false);
-        ButterKnife.bind(this, view);
-        return view;
-    }
-
-    @Override
-    @NonNull public ViewState createViewState() {
-        return new LoginViewState();
-    }
-
-    @Override
-    public void onNewViewStateInstance() {
-        showLoginForm();
+        setContentView(R.layout.activity_login);
+        ButterKnife.bind(this);
     }
 
     @Override
@@ -92,10 +88,6 @@ public class LoginFragment extends MvpViewStateFragment<LoginView, LoginPresente
 
     @Override
     public void showLoginForm() {
-        ((LoginViewState)viewState).setStateForm();
-
-        resetForm();
-
         mUsername.setEnabled(true);
         mPassword.setEnabled(true);
         mSubmit.setEnabled(true);
@@ -104,8 +96,6 @@ public class LoginFragment extends MvpViewStateFragment<LoginView, LoginPresente
 
     @Override
     public void showLoading() {
-        ((LoginViewState)viewState).setStateLoading();
-
         mUsername.setEnabled(false);
         mPassword.setEnabled(false);
         mSubmit.setEnabled(false);
@@ -114,20 +104,16 @@ public class LoginFragment extends MvpViewStateFragment<LoginView, LoginPresente
 
     @Override
     public void showError() {
-        ((LoginViewState)viewState).setStateError();
-
         mUsername.setEnabled(true);
         mPassword.setEnabled(true);
-        mPassword.setText(getString(R.string.empty));
         mSubmit.setEnabled(true);
         mSubmit.setProgress(0);
 
-        Toaster.showToast(getActivity(), R.string.login_error);
+        mUsername.setError(getString(R.string.login_error));
     }
 
-    private void resetForm() {
-        mUsername.setText(R.string.empty);
-        mPassword.setText(R.string.empty);
-        mSubmit.setProgress(0);
+    @Override
+    public void onSuccess() {
+        Navigation.startMain(this);
     }
 }
