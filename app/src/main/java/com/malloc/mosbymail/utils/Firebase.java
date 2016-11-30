@@ -16,11 +16,23 @@ public class Firebase {
         return FirebaseDatabase.getInstance().getReference().child(Constants.FIREBASE_DB_LIKES).child(postId);
     }
 
+    public static DatabaseReference getPostCommentsRef(final String postId) {
+        return FirebaseDatabase.getInstance().getReference().child(Constants.FIREBASE_DB_COMMENTS).child(postId);
+    }
+
     public static Query getPostQuery() {
         return getQuery(Constants.FIREBASE_DB_POSTS).orderByChild("creationDate");
     }
 
+    public static Query getCommentsQuery(final String postId) {
+        return getQuery(Constants.FIREBASE_DB_COMMENTS, postId);
+    }
+
     private static Query getQuery(final String child) {
         return FirebaseDatabase.getInstance().getReference().child(child);
+    }
+
+    private static Query getQuery(final String child, final String id) {
+        return FirebaseDatabase.getInstance().getReference().child(child).child(id);
     }
 }
