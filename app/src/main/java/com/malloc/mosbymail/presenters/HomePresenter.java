@@ -11,6 +11,8 @@ import org.greenrobot.eventbus.EventBus;
 
 public class HomePresenter extends MvpBasePresenter<HomeView> {
 
+    private final static String TAG = HomePresenter.class.getSimpleName();
+
     private final EventBus mEventBus;
 
     public HomePresenter() {

@@ -1,16 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<android.support.design.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center">
 
-    <TextView
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:text="Home"/>
+        android:layout_height="match_parent" />
 
-</LinearLayout>
+    <android.support.design.widget.FloatingActionButton
+        style="@style/FABHome"
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_anchor="@id/recycler"
+        app:layout_anchorGravity="bottom|center"
+        app:layout_behavior="com.malloc.mosbymail.behaviors.FABScrollAwareBehavior"
+        android:layout_marginBottom="@dimen/home_fab_margin" />
+
+</android.support.design.widget.CoordinatorLayout>

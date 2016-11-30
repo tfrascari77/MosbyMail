@@ -12,4 +12,10 @@ public interface MainView extends MvpView {
 
     // Show the home screen
     void showHome();
+
+    // Show the create post success toast
+    void showCreatePostSuccess();
+
+    // Show the error dialog
+    void showErrorDialog();
 }

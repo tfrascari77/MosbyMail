@@ -3,6 +3,7 @@ package com.malloc.mosbymail.presenters;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.hannesdorfmann.mosby.mvp.MvpBasePresenter;
+import com.malloc.mosbymail.events.CreatePostEvent;
 import com.malloc.mosbymail.events.LoginEvent;
 import com.malloc.mosbymail.events.LogoutEvent;
 import com.malloc.mosbymail.views.MainView;
@@ -43,6 +44,17 @@ public class MainPresenter extends MvpBasePresenter<MainView> {
     public void onMessageEvent(final LogoutEvent event) {
         if (isViewAttached()) {
             getView().showLogin();
+        }
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onMessageEvent(final CreatePostEvent event) {
+        if (isViewAttached()) {
+            if (event.isSuccess()) {
+                getView().showCreatePostSuccess();
+            } else {
+                getView().showErrorDialog();
+            }
         }
     }
 

@@ -10,6 +10,8 @@ import com.malloc.mosbymail.fragments.HomeFragment;
 import com.malloc.mosbymail.fragments.LoginFragment;
 import com.malloc.mosbymail.fragments.SplashFragment;
 import com.malloc.mosbymail.presenters.MainPresenter;
+import com.malloc.mosbymail.utils.Dialogs;
+import com.malloc.mosbymail.utils.Toaster;
 import com.malloc.mosbymail.views.MainView;
 
 public class MainActivity extends MvpActivity<MainView, MainPresenter> implements MainView {
@@ -75,13 +77,23 @@ public class MainActivity extends MvpActivity<MainView, MainPresenter> implement
 
     @Override
     public void showHome() {
-        setTitle(R.string.home);
-        setActionBarVisibility(true);
         getSupportFragmentManager().beginTransaction()
                 .hide(mSplashFragment)
                 .hide(mLoginFragment)
                 .show(mHomeFragment)
                 .commit();
+        setActionBarVisibility(true);
+        setTitle(R.string.home);
+    }
+
+    @Override
+    public void showErrorDialog() {
+        Dialogs.showErrorDialog(this);
+    }
+
+    @Override
+    public void showCreatePostSuccess() {
+        Toaster.showToast(this, R.string.post_created_successfully);
     }
 
     private void setActionBarVisibility(final boolean visible) {
