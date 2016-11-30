@@ -11,7 +11,7 @@ public class Dialogs {
     public static void showErrorDialog(final Context context) {
         final AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setTitle(R.string.error_dialog_title);
-        builder.setMessage(R.string.error_dialog_message);
+        builder.setMessage(R.string.error_common_message);
         builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {

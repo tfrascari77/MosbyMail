@@ -30,7 +30,6 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.malloc.mosbymail.Constants;
 import com.malloc.mosbymail.events.CreatePostEvent;
-import com.malloc.mosbymail.models.Comment;
 import com.malloc.mosbymail.models.Post;
 
 import org.greenrobot.eventbus.EventBus;
@@ -65,9 +64,6 @@ public class AppService extends Service {
                     break;
                 case Constants.SERVICE_ACTION_LIKE_POST:
                     onLikePost(data);
-                    break;
-                case Constants.SERVICE_ACTION_COMMENT_POST:
-                    onCommentPost(data);
                     break;
             }
             stopSelf(msg.arg1);
@@ -157,27 +153,6 @@ public class AppService extends Service {
 
             }
         });
-    }
-
-    private void onCommentPost(final Bundle data) {
-        if (!data.containsKey(Constants.EXTRA_POST_ID) || !data.containsKey(Constants.EXTRA_COMMENT_TEXT)) {
-            return;
-        }
-
-        final String postId = data.getString(Constants.EXTRA_POST_ID);
-        final String text = data.getString(Constants.EXTRA_COMMENT_TEXT);
-
-        final FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-        if (currentUser == null) {
-            return;
-        }
-
-        final Comment comment = new Comment(currentUser.getUid(), currentUser.getDisplayName(), text, System.currentTimeMillis() * -1);
-        final DatabaseReference postCommentsRefs = FirebaseDatabase.getInstance().getReference().child(Constants.FIREBASE_DB_COMMENTS).child(postId);
-        final String key = postCommentsRefs.push().getKey();
-        final Map<String, Object> commentValues = comment.toMap();
-
-        postCommentsRefs.child(key).updateChildren(commentValues);
     }
 
     @Nullable

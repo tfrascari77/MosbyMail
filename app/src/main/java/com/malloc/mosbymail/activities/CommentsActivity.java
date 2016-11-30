@@ -6,10 +6,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.Editable;
-import android.text.TextUtils;
 import android.view.MenuItem;
-import android.widget.ImageView;
 
 import com.hannesdorfmann.mosby.mvp.lce.MvpLceActivity;
 import com.malloc.mosbymail.Constants;
@@ -17,43 +14,22 @@ import com.malloc.mosbymail.R;
 import com.malloc.mosbymail.adapters.CommentAdapter;
 import com.malloc.mosbymail.models.Comment;
 import com.malloc.mosbymail.presenters.CommentsPresenter;
-import com.malloc.mosbymail.services.AppServiceClient;
-import com.malloc.mosbymail.utils.Input;
 import com.malloc.mosbymail.views.CommentsView;
-import com.rengwuxian.materialedittext.MaterialEditText;
+import com.malloc.mosbymail.widgets.CommentActionBar;
 
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
-import butterknife.OnTextChanged;
 
 public class CommentsActivity extends MvpLceActivity<SwipeRefreshLayout, List<Comment>, CommentsView, CommentsPresenter> implements CommentsView, SwipeRefreshLayout.OnRefreshListener {
 
     @BindView(R.id.recyclerView)
     RecyclerView mRecycler;
 
-    @BindView(R.id.input_comment)
-    MaterialEditText mCommentInput;
+    @BindView(R.id.comment_actionbar)
+    CommentActionBar mCommentActionBar;
 
-    @BindView(R.id.send_comment)
-    ImageView mSendComment;
-
-    @OnClick(R.id.send_comment)
-    public void onSendCommentPressed() {
-        final String commentText = mCommentInput.getText().toString();
-        mCommentInput.setText(R.string.empty);
-        Input.hideKeyboard(this);
-        mAppServiceClient.commentPost(commentText, getPostId());
-    }
-
-    @OnTextChanged(value = R.id.input_comment, callback = OnTextChanged.Callback.AFTER_TEXT_CHANGED)
-    public void onCommentInputTextChanged(final Editable editable) {
-        mSendComment.setEnabled(!TextUtils.isEmpty(mCommentInput.getText().toString()));
-    }
-
-    private AppServiceClient mAppServiceClient;
     private CommentAdapter mAdapter;
 
     @Override
@@ -62,9 +38,9 @@ public class CommentsActivity extends MvpLceActivity<SwipeRefreshLayout, List<Co
         setContentView(R.layout.activity_comments);
         ButterKnife.bind(this);
 
-        mAppServiceClient = new AppServiceClient(this);
 
         setupActionBar();
+        setupCommentActionBar();
         setupRecycler();
     }
 
@@ -73,6 +49,10 @@ public class CommentsActivity extends MvpLceActivity<SwipeRefreshLayout, List<Co
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
+    }
+
+    private void setupCommentActionBar() {
+        mCommentActionBar.setPostId(getPostId());
     }
 
     private void setupRecycler() {

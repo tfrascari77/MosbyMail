@@ -22,7 +22,7 @@
     <string name="image_filename_format">JPEG_%1$s_</string>
     <string name="image_filename_ext">.jpg</string>
     <string name="error_dialog_title">Error</string>
-    <string name="error_dialog_message">An error occurred, please try again.</string>
+    <string name="error_common_message">An error occurred, please try again.</string>
     <string name="ok">OK</string>
     <string name="title">Title</string>
     <string name="create_post">Create Post</string>
